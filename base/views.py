@@ -13,3 +13,7 @@ def projectPage(request, pk):
     project = Project.objects.get(id = pk)
     context = {'project':project}
     return render(request, 'base/project.html', context)
+
+def addProject(request):
+    context = {}
+    return render(request, 'base/project_form.html',context)
