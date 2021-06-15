@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Project, Tag, Skill
+from .forms import ProjectForm
 # Create your views here.
 
 def homePage(request):
@@ -15,5 +16,6 @@ def projectPage(request, pk):
     return render(request, 'base/project.html', context)
 
 def addProject(request):
-    context = {}
+    form = ProjectForm()
+    context = {'form':form}
     return render(request, 'base/project_form.html',context)
