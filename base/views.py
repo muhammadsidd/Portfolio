@@ -4,5 +4,12 @@ from .models import Project, Tag, Skill
 
 def homePage(request):
     projects = Project.objects.all()
-    skills = Skill.objects.all()
-    return render(request, 'base/home.html', {'projects':projects, 'skills':skills})
+    detailedSkills = Skill.objects.exclude(body ='')
+    skills = Skill.objects.filter(body ='')
+    context = {'projects':projects, 'skills':skills, 'detailedSkills':detailedSkills}
+    return render(request, 'base/home.html', context)
+
+def projectPage(request, pk):
+    project = Project.objects.get(id = pk)
+    context = {'project':project}
+    return render(request, 'base/project.html', context)
