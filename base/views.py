@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Project, Tag, Skill
 from .forms import ProjectForm
 # Create your views here.
@@ -17,5 +17,27 @@ def projectPage(request, pk):
 
 def addProject(request):
     form = ProjectForm()
+
+    if request.method == 'POST':
+        form = ProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context = {'form':form}
+    return render(request, 'base/project_form.html',context)
+
+def editProject(request, pk):
+    project = Project.objects.get(id=pk)
+    form = ProjectForm(instance = project)
+
+    if request.method == 'POST': 
+        # need to pass instance = project to let tDjango know which project needs to be updated,
+        # if we dont pass instance = project, new project will be created. 
+        form = ProjectForm(request.POST, request.FILES, instance = project)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
     context = {'form':form}
     return render(request, 'base/project_form.html',context)
