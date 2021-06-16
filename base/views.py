@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Project, Tag, Skill
+from .models import Project, Skill
 from .forms import ProjectForm
 # Create your views here.
 
