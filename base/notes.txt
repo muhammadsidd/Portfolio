@@ -1,0 +1,4 @@
+we added ckeditor so that we can have a rich tool editor in our body, 
+once we have that we need to change model.textField() to RichTextField()
+and add a pip in our template where the edited text is being out putted 
+add a pipe ' | safe' for the changes to be reflected in the template

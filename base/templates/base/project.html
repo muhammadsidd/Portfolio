@@ -21,6 +21,7 @@
         <a class="btn btn-warning" href="{% url 'edit-project' project.id %}">Edit</a>
 
         <hr>
+        <!-- the pipe is so the RichTextField is outputted properly  -->
         <p>{{project.body|safe}}</p>
 
         <div class="comments-container">
