@@ -128,5 +128,8 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
+MEDIA_URL = 'images/'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
