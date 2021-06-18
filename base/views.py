@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Project, Skill, Message
 from .forms import ProjectForm
+from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
 # Create your views here.
 
 def homePage(request):
@@ -46,3 +47,9 @@ def inboxPage(request):
     inbox = Message.objects.all().order_by('is_read') #messages that arent read top priority. for reverse use '-is_read'
     context = {'inbox':inbox}
     return render(request, 'base/inbox.html',context)
+
+class MessageDetail(DetailView):
+    model = Message
+    template_name = 'base/message.html'
+    context_object_name = 'message'
+    # ordering = ['-date_created']
