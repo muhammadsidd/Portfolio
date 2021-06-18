@@ -41,3 +41,7 @@ def editProject(request, pk):
 
     context = {'form':form}
     return render(request, 'base/project_form.html',context)
+
+def inboxPage(request):
+    context = {}
+    return render(request, 'base/inbox.html',context)
